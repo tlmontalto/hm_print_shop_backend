@@ -9,7 +9,7 @@ from playhouse.db_url import connect
 # s3 = boto3.resource('s')
 
 if 'ON_HEROKU' in os.environ:
-    DATABASE = connect(os.environ.get('https://hm-print-shop-backend.herokuapp.com/'))
+    DATABASE = connect(os.environ.get('postgres://yomnzeafsjhioq:91137a853bf3868ac2990020b452c5b5146fd29deac3ac800b85d6d8ecc06100@ec2-54-147-93-73.compute-1.amazonaws.com:5432/dfgaaipjmoouah'))
 else:
     DATABASE = PostgresqlDatabase('hmprintshop')
 
