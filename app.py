@@ -9,7 +9,7 @@ from resources.link import link
 
 login_manager = LoginManager()
 
-DEBUG = True
+DEBUG = False
 PORT = 5000
 
 # print(__name__)
