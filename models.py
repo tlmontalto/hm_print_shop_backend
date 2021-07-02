@@ -1,10 +1,17 @@
+import os
 from datetime import datetime
 
 from peewee import *
 from flask_login import UserMixin
+from playhouse.db_url import connect
 
+# import boto3
+# s3 = boto3.resource('s')
 
-DATABASE = PostgresqlDatabase('hmprintshop')
+if 'ON_HEROKU' in os.environ:
+    DATABASE = connect(os.environ.get('postgres://yomnzeafsjhioq:91137a853bf3868ac2990020b452c5b5146fd29deac3ac800b85d6d8ecc06100@ec2-54-147-93-73.compute-1.amazonaws.com:5432/dfgaaipjmoouah'))
+else:
+    DATABASE = PostgresqlDatabase('hmprintshop')
 
 class HMPUser(UserMixin, Model):
     username = CharField(unique=True)
