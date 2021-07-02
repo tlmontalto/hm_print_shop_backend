@@ -10,7 +10,7 @@ from playhouse.shortcuts import model_to_dict
 # second argument is it's import_name
 # The third argument is the url_prefix so we don't have
 # to prefix all our apis with /api/v1
-user = Blueprint('users', 'user')
+user = Blueprint('hmpusers', 'hmpuser')
 
 @user.route('/register', methods=["POST"])
 def register():
@@ -21,11 +21,11 @@ def register():
     payload['email'] = payload['email'].lower()
     try:
         # Find if the user already exists?
-        models.User.get(models.User.email == payload['email']) # model query finding by email
+        models.HMPUser.get(models.HMPUser.email == payload['email']) # model query finding by email
         return jsonify(data={}, status={"code": 401, "message": "A user with that name already exists"})
     except models.DoesNotExist:
         payload['password'] = generate_password_hash(payload['password']) # bcrypt line for generating the hash
-        user = models.User.create(**payload) # put the user in the database
+        user = models.HMPUser.create(**payload) # put the user in the database
          # **payload, is spreading like js (...) the properties of the payload object out
 
         # starts user session
@@ -44,7 +44,7 @@ def login():
     payload = request.get_json()
     print(payload)
     try:
-        user = models.User.get(models.User.email == payload['email'])
+        user = models.HMPUser.get(models.HMPUser.email == payload['email'])
         user_dict = model_to_dict(user)
         if(check_password_hash(user_dict['password'], payload['password'])):
             del user_dict['password']
@@ -63,7 +63,7 @@ def logout():
 @user.route('/', methods=["GET"])
 def get_all_users():
     try:
-        users = [model_to_dict(user) for user in models.User.select()]
+        users = [model_to_dict(user) for user in models.HMPUser.select()]
         print(users)
         return jsonify(data=users, status={"code": 200, "message": "Success"})
     except models.DoesNotExist:

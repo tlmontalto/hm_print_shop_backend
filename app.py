@@ -4,13 +4,14 @@ from flask_login import LoginManager, login_manager
 
 import models
 from resources.user import user
+from resources.link import link
 
 login_manager = LoginManager()
 
 DEBUG = True
 PORT = 5000
 
-print(__name__)
+# print(__name__)
 app = Flask(__name__)
 CORS(app)
 
@@ -40,7 +41,7 @@ def index():
     return 'Hello there'
 
 CORS(user, origins =['http://localhost:3000'], supports_credentials=True)
-app.register_blueprint(user, url_prefix='/api/v1/users')
+app.register_blueprint(user, url_prefix='/api/v1/hmpusers')
 
 if __name__ == '__main__':
     models.initialize()
