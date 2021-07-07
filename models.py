@@ -5,8 +5,6 @@ from peewee import *
 from flask_login import UserMixin
 from playhouse.db_url import connect
 
-# import boto3
-# s3 = boto3.resource('s')
 
 S3_BUCKET = os.environ.get('hm-stl-files')
 S3_KEY = os.environ.get('AKIA5UDGJH2NGSHYTZVQ')
