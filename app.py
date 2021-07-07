@@ -23,7 +23,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 def load_user(user_id):
     try:
-        return models.User.get(models.User.id == user_id)
+        return models.HMPUser.get(models.HMPUser.id == user_id)
     except models.DoesNotExist:
         return None
 
