@@ -14,6 +14,7 @@ user = Blueprint('hmpusers', 'hmpuser')
 
 @user.route('/register', methods=["POST"])
 def register():
+    print('banana')
     # See request payload anagolous to req.body in express
     # This has all the data like username, email, password
     payload = request.get_json()

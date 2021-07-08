@@ -20,10 +20,12 @@ class HMPUser(UserMixin, Model):
     class Meta:
         database = DATABASE
 
-class Link (Model):
+class Item (Model):
     username = CharField()
+    name = CharField()
     description = CharField()
     file_url = CharField()
+    price = CharField()
     created_at = DateTimeField(default = datetime.now)
 
     class Meta:
@@ -31,6 +33,6 @@ class Link (Model):
 
 def initialize():
     DATABASE.connect()
-    DATABASE.create_tables([HMPUser, Link], safe=True)
+    DATABASE.create_tables([HMPUser, Item], safe=True)
     print('Peewee connected and tables created')
     DATABASE.close()
