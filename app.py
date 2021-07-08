@@ -41,7 +41,7 @@ def after_request(response):
 def index():
     return 'Hello there'
 
-CORS(user, origins =['http://localhost:3000'], supports_credentials=True)
+CORS(user, origins =['http://localhost:3000', 'https://hm-print-shop.herokuapp.com/'], supports_credentials=True)
 app.register_blueprint(user, url_prefix='/api/v1/hmpusers')
 
 if 'ON_HEROKU' in os.environ: 
