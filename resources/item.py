@@ -17,7 +17,7 @@ item = Blueprint('items', 'item')
 curl 'http://localhost:5000/api/v1/items/'
 """
 @item.route('/', methods=['GET'])
-@login_required
+# @login_required
 def get_all_items():
     # if not current_user.email.endswith('edu'):
     #     return jsonify(data={}, status={"code": 403, "message": "Not authorized"})
@@ -31,7 +31,7 @@ def get_all_items():
         #     print(model_to_dict(link))
         #     links.append(model_to_dict(link))
 
-        items = [model_to_dict(item) for item in current_user.item]
+        items = [model_to_dict(item) for item in models.Item.select()]
         
         print(items)
         return jsonify(data=items, status={'code': 200, 'message': 'Success'})
@@ -59,7 +59,7 @@ def create_item():
     print(payload)
 
     try:
-        item = models.Item.create(username=payload['username'], name=payload['name'], description=payload['description'], file_url=payload['file_url'], price=payload['price'])
+        item = models.Item.create(name=payload['name'], description=payload['description'], file_url=payload['file_url'], price=payload['price'])
 
         print(item.__dict__)
 

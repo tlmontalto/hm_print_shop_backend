@@ -21,7 +21,6 @@ class HMPUser(UserMixin, Model):
         database = DATABASE
 
 class Item (Model):
-    username = CharField()
     name = CharField()
     description = CharField()
     file_url = CharField()

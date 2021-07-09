@@ -9,7 +9,7 @@ from resources.item import item
 
 login_manager = LoginManager()
 
-DEBUG = False
+DEBUG = True
 PORT = 5000
 
 # print(__name__)
