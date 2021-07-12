@@ -16,6 +16,10 @@ class HMPUser(UserMixin, Model):
     email = CharField(unique=True)
     password = CharField()
     created_at = DateTimeField(default = datetime.now)
+
+    class Meta:
+        database = DATABASE
+
 class Item (Model):
     name = CharField()
     description = CharField()

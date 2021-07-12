@@ -5,11 +5,11 @@ from flask_login import LoginManager, login_manager
 
 import models
 from resources.user import user
-from resources.link import link
+from resources.item import item
 
 login_manager = LoginManager()
 
-DEBUG = False
+DEBUG = True
 PORT = 5000
 
 # print(__name__)
@@ -43,6 +43,10 @@ def index():
 
 CORS(user, origins =['http://localhost:3000', 'https://hm-print-shop.herokuapp.com/'], supports_credentials=True)
 app.register_blueprint(user, url_prefix='/api/v1/hmpusers')
+
+CORS(item, origins =['http://localhost:3000', 'https://hm-print-shop.herokuapp.com/'], supports_credentials=True)
+app.register_blueprint(item, url_prefix='/api/v1/items')
+
 
 if 'ON_HEROKU' in os.environ: 
   print('\non heroku!')

@@ -68,3 +68,13 @@ def get_all_users():
         return jsonify(data=users, status={"code": 200, "message": "Success"})
     except models.DoesNotExist:
         return jsonify(data={}, status={"code": 401, "message": "Error getting the resources"})
+
+# Show route
+@user.route('/<id>', methods=["GET"])
+def get_one_user(id):
+    # getting the link from the ID parameter
+    user = models.HMPUser.get_by_id(id)
+    # printing the link that we got and coverting it to a dictionary
+    print(user.__dict__)
+    # return JSON object of the link and a status code of 200 since we are successful
+    return jsonify(data=model_to_dict(user), status={"code": 200, "message": "successful link"})
