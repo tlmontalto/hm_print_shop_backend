@@ -59,7 +59,7 @@ def create_item():
     print(payload)
 
     try:
-        item = models.Item.create(name=payload['name'], description=payload['description'], file_url=payload['file_url'], price=payload['price'])
+        item = models.Item.create(name=payload['name'], description=payload['description'], file_url=payload['file_url'], img_url=payload['img_url'], price=payload['price'])
 
         print(item.__dict__)
 

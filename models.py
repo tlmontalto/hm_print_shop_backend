@@ -24,6 +24,7 @@ class Item (Model):
     name = CharField()
     description = CharField()
     file_url = CharField()
+    img_url = CharField()
     price = CharField()
     created_at = DateTimeField(default = datetime.now)
 
