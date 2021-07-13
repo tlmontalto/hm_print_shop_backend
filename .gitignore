@@ -9,6 +9,9 @@ lerna-debug.log*
 # Venv
 venv
 
+# pycache
+__pychache__
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
