@@ -1,4 +1,4 @@
-#!/Users/tmontalto/dev/hm_print_shop/venv/bin/python3.9
+#!/Users/tmontalto/dev/hm_print_shop/hm_print_shop_backend/venv/bin/python3.9
 
 import datetime
 import sys
